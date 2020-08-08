@@ -4,13 +4,17 @@ import PropTypes from "prop-types";
 import MikePhoto from "../../img/m101.jpg";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { Modal } from "../component/Modal";
 
 const ContactCard = props => {
 	const { store, actions } = useContext(Context);
+	const [modal, setModal] = useState(false);
+	const [id, setId] = useState(null);
 	console.log("store:", store.contacts); //thats how we know what we are able to map
 
 	return (
 		<div>
+			<Modal show={modal} onClose={setModal} onDelete={actions.deleteContact} id={id} />
 			{store.contacts &&
 				store.contacts.map((e, index) => {
 					return (
@@ -38,7 +42,9 @@ const ContactCard = props => {
 										<button
 											className="btn"
 											onClick={() => {
-												actions.deleteContact(e.id);
+												setId(e.id);
+												setModal(true);
+												// actions.deleteContact(e.id);
 												// getting the ids when map
 											}}>
 											{/*we change props.onDelete actions.deleteContact(e.id)*/}

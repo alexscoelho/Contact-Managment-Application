@@ -41,12 +41,13 @@ const AddContact = props => {
 				<h1 className="text-center mt-5">{contact !== null ? "Edit" : "Add a new"} contact</h1>
 				{message ? (
 					<div className="alert alert-success" role="alert">
-						Successfull
+						Saved
 					</div>
 				) : null}
 				<div className="form-group">
 					<label>Full Name</label>
 					<input
+						// set the state with values from the form
 						onChange={e => setFullName(e.target.value)}
 						value={fullName}
 						type="text"
