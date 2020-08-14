@@ -8,13 +8,14 @@ import { Modal } from "../component/Modal";
 
 const ContactCard = props => {
 	const { store, actions } = useContext(Context);
-	const [modal, setModal] = useState(false);
-	const [id, setId] = useState(null);
+	const [modal, setModal] = useState(false); // create a state for showing or not the modal
+	const [id, setId] = useState(null); // initialize the id to null
 	console.log("store:", store.contacts); //thats how we know what we are able to map
 
 	return (
 		<div>
-			<Modal show={modal} onClose={setModal} onDelete={actions.deleteContact} id={id} />
+			{/*using props defined on modal, bring the delete action from the flux*/}
+			<Modal show={modal} onClose={setModal} onDelete={actions.deleteContact} id={id} />{" "}
 			{store.contacts &&
 				store.contacts.map((e, index) => {
 					return (
@@ -44,6 +45,7 @@ const ContactCard = props => {
 											onClick={() => {
 												setId(e.id);
 												setModal(true);
+												// setting the state and the id
 												// actions.deleteContact(e.id);
 												// getting the ids when map
 											}}>

@@ -7,6 +7,7 @@ export const Modal = props => {
 	// 	//initialize state here
 	// });
 	const { onDelete, id, onClose } = props;
+	// defining the handleDelete
 	const handleDelete = () => {
 		onDelete(id);
 		onClose(false);
@@ -34,6 +35,7 @@ export const Modal = props => {
 						<p>Warning: unknown consequences after this point... Kidding!</p>
 					</div>
 					<div className="modal-footer">
+						{/* modal props */}
 						<button onClick={() => onClose(false)} type="button" className="btn btn-primary">
 							Oh no!
 						</button>
